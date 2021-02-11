@@ -10,17 +10,28 @@ const IndexPage: React.FC<PageProps<any>> = ({data}) => (
     <h3>Fields Example Query</h3>
     <h4>Example Query:</h4>
     <CodeBlock
-      text={`query getCharacters {
-      astra {
-          gatsbyCharacters {
-              values {
-                  actorName
-                  houseName
-                  name
-              }
+      text={`query GetKeyspace {
+        keyspace(name: "fifadb") {
+          name
+          dcs {
+            name
+            replicas
           }
-      }
-  }`}
+          tables {
+            name
+            columns {
+              name
+              kind
+              type {
+                basic
+                info {
+                  name
+                }
+              }
+            }
+          }
+        }
+      }`}
       language={'graphql'}
       showLineNumbers={false}
       theme={dracula}
